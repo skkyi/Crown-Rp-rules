@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوانين سيرفر كراون RP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <div class="container">
+        <div id="main-view">
+            <h1>قوانين سيرفر كراون RP</h1>
+            <div class="grid-container">
+                <div class="card" onclick="showContent('city-rules')">قوانين المدينة</div>
+                <div class="card" onclick="showContent('ban-rules')">حالات تعرض للباند النهائي</div>
+                <div class="card" onclick="showContent('chat-rules')">قوانين شات اللعبة</div>
+                <div class="card" onclick="showContent('admin-rules')">قوانين طلب الإداريين</div>
+                <div class="card" onclick="showContent('kidnap-rules')">قوانين الخطف والتلويت</div>
+                <div class="card" onclick="showContent('general-rules')">قوانين عامة</div>
+            </div>
+            <p class="note">ملاحظة: جميع القوانين تابعة لسيرفر كراون، نرجوا منك إتباع جميع القوانين لكي لا يتم محاسبتك.</p>
+        </div>
+
+        <div id="content-view" class="hidden">
+            <div class="content-box">
+                <div class="header-row">
+                    <button class="back-btn" onclick="showMain()">رجوع ➔</button>
+                    <h2 id="content-title">العنوان</h2>
+                </div>
+                <div id="content-text" class="scroll-area">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
