@@ -7,6 +7,7 @@ const mainMenuData = {
                 <div class="card main-card" onclick="loadGangRules()"> قوانين المنظمات والعصابات ✦</div>
                 <div class="card main-card" onclick="loadDiscordRules()"> قـوانين الـدسكورد ✦</div>
                 <div class="card main-card" onclick="loadMinistryRules()"> قـوانين الـوزارات ✦</div>
+                <div class="card main-card" onclick="loadEscapeRules()"> قوانين الهروب الأمني ✦</div>
             </div>`
     }
 };
