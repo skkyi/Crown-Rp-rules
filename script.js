@@ -3,8 +3,6 @@ let navigationStack = [];
 
 /**
  * الدالة الأساسية لعرض المحتوى
- * @param {string} contentKey - المفتاح المطلوب عرضه (مثل 'main' أو 'city-rules')
- * @param {Object} dataSource - كائن البيانات الذي يحتوي على هذا المفتاح
  */
 function renderContent(contentKey, dataSource) {
     const data = dataSource[contentKey];
@@ -23,16 +21,29 @@ function renderContent(contentKey, dataSource) {
         navigationStack.push({ key: contentKey, source: dataSource });
     }
 
-    // إظهار أو إخفاء زر الرجوع
-    const backBtn = document.getElementById('back-button');
-    if (navigationStack.length > 1) {
-        backBtn.style.display = 'inline-block';
-    } else {
-        backBtn.style.display = 'none';
-    }
+    // تحديث ظهور زر الرجوع بشكل دائم وذكي
+    updateBackButton();
 
     // التمرير لأعلى الصفحة عند تغيير المحتوى
-    document.getElementById('content-area').scrollTop = 0;
+    window.scrollTo(0, 0);
+}
+
+/**
+ * دالة تحديث حالة زر الرجوع
+ */
+function updateBackButton() {
+    const backBtn = document.getElementById('back-button');
+    if (!backBtn) return;
+
+    // إذا كنا في الصفحة الرئيسية تماماً (main) أو المصفوفة فارغة، نخفي الزر
+    // ملاحظة: تأكد أن مفتاح القائمة الرئيسية في mainMenuData هو 'main'
+    const currentKey = navigationStack.length > 0 ? navigationStack[navigationStack.length - 1].key : '';
+
+    if (navigationStack.length <= 1 || currentKey === 'main') {
+        backBtn.style.display = 'none';
+    } else {
+        backBtn.style.display = 'block'; // يظهر الزر في كل الخانات الأخرى
+    }
 }
 
 /**
@@ -40,15 +51,37 @@ function renderContent(contentKey, dataSource) {
  */
 function goBack() {
     if (navigationStack.length > 1) {
-        navigationStack.pop(); // حذف الصفحة الحالية من التاريخ
+        navigationStack.pop(); // حذف الصفحة الحالية
         const lastPage = navigationStack[navigationStack.length - 1];
         
-        // إعادة عرض الصفحة السابقة بدون إضافتها للتاريخ مجدداً
-        // (سيتم التعامل مع الإضافة داخل renderContent تلقائياً مع فحص التكرار)
+        // إعادة عرض الصفحة السابقة
         renderContent(lastPage.key, lastPage.source);
         
-        // بما أن renderContent ستضيفها مرة أخرى، نحذف التكرار الناتج
+        // حذف التكرار الناتج عن renderContent
         navigationStack.pop(); 
+    }
+    updateBackButton();
+}
+
+/**
+ * دالة البحث الشامل عن المحتوى (تستخدم داخل المربعات)
+ */
+function showContent(key) {
+    // البحث في جميع الملفات المتوفرة
+    if (typeof cityRulesData !== 'undefined' && cityRulesData[key]) {
+        renderContent(key, cityRulesData);
+    } 
+    else if (typeof gangRulesData !== 'undefined' && gangRulesData[key]) {
+        renderContent(key, gangRulesData);
+    } 
+    else if (typeof ministryRulesData !== 'undefined' && ministryRulesData[key]) {
+        renderContent(key, ministryRulesData);
+    } 
+    else if (typeof discordRulesData !== 'undefined' && discordRulesData[key]) {
+        renderContent(key, discordRulesData);
+    }
+    else if (typeof mainMenuData !== 'undefined' && mainMenuData[key]) {
+        renderContent(key, mainMenuData);
     }
 }
 
@@ -64,21 +97,9 @@ function loadMinistryRules() {
 }
 
 function loadGangRules() {
-    // بما أن قوانين العصابات صفحة واحدة، ننتقل لها مباشرة
     renderContent('gang-rules', gangRulesData);
 }
 
 function loadDiscordRules() {
     renderContent('discord-main', discordRulesData);
-}
-
-/**
- * دالة مساعدة لاستخدامها داخل المربعات (مثل الانتقال من قائمة المدينة لقانون معين)
- */
-function showContent(key) {
-    // البحث عن المفتاح في جميع ملفات البيانات المتاحة
-    if (cityRulesData[key]) renderContent(key, cityRulesData);
-    else if (gangRulesData[key]) renderContent(key, gangRulesData);
-    else if (ministryRulesData[key]) renderContent(key, ministryRulesData);
-    else if (discordRulesData[key]) renderContent(key, discordRulesData);
 }
