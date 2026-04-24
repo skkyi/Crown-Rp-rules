@@ -387,73 +387,50 @@ let previousView = 'main-view';
             </p>
         </div>`
     }
-};
+}; 
 
-// --- Global Variables ---
-// Tracks the previous view to allow navigation back.
-// Initialized to 'main-view' as the default starting point.
 let previousView = 'main-view';
 
-// --- Functions ---
 
-/**
- * Displays content based on the provided key.
- * Updates the UI to show the selected rule section.
- * Manages the 'previousView' state for navigation.
- * @param {string} key - The key corresponding to the rule section in rulesData.
- */
 function showContent(key) {
     const data = rulesData[key];
     if (!data) {
-        console.error(`Content with key "${key}" not found.`);
+        console.error(`Key "${key}" not found.`);
         return;
     }
 
-    // Determine the previous view based on the key's category.
-    // This logic could be refactored for better maintainability if more categories are added.
     const mainCategories = ['city-rules', 'ministry-main', 'gang-rules', 'discord-rules'];
-    const citySubCategories = ['city-terms', 'ban-cases', 'chat-rules-detail', 'admin-requests', 'kidnap-loot', 'general-city-rules'];
-    const ministrySubCategories = ['min-system', 'civil-system', 'state-const', 'immunity', 'public-security', 'royal-guard', 'health-min'];
+    const citySub = ['city-terms', 'ban-cases', 'chat-rules-detail', 'admin-requests', 'kidnap-loot', 'general-city-rules'];
+    const ministrySub = ['min-system', 'civil-system', 'state-const', 'immunity', 'public-security', 'health-min'];
 
     if (mainCategories.includes(key)) {
         previousView = 'main-view';
-    } else if (citySubCategories.includes(key)) {
+    } else if (citySub.includes(key)) {
         previousView = 'city-rules';
-    } else if (ministrySubCategories.includes(key)) {
+    } else if (ministrySub.includes(key)) {
         previousView = 'ministry-main';
     }
-    // Add more else if blocks here for other sub-category mappings if needed.
 
-    // Update UI elements.
-    const mainViewElement = document.getElementById('main-view');
-    const contentViewElement = document.getElementById('content-view');
-    const contentTitleElement = document.getElementById('content-title');
-    const contentTextElement = document.getElementById('content-text');
-
-    if (mainViewElement) mainViewElement.classList.add('hidden');
-    if (contentViewElement) contentViewElement.classList.remove('hidden');
-    if (contentTitleElement) contentTitleElement.innerText = data.title;
-    if (contentTextElement) contentTextElement.innerHTML = data.text;
-
-    // Scroll to the top of the content view.
-    window.scrollTo(0, 0);
+    const mainView = document.getElementById('main-view');
+    const contentView = document.getElementById('content-view');
+    
+    if (mainView && contentView) {
+        mainView.classList.add('hidden');
+        contentView.classList.remove('hidden');
+        document.getElementById('content-title').innerText = data.title;
+        document.getElementById('content-text').innerHTML = data.text;
+        window.scrollTo(0, 0);
+    }
 }
 
-/**
- * Navigates back to the previous view.
- * If the previous view was the main menu, it shows the main menu.
- * Otherwise, it calls showContent with the stored previousView key.
- */
 function showMain() {
-    const mainViewElement = document.getElementById('main-view');
-    const contentViewElement = document.getElementById('content-view');
+    const mainView = document.getElementById('main-view');
+    const contentView = document.getElementById('content-view');
 
     if (previousView === 'main-view') {
-        if (contentViewElement) contentViewElement.classList.add('hidden');
-        if (mainViewElement) mainViewElement.classList.remove('hidden');
+        if (contentView) contentView.classList.add('hidden');
+        if (mainView) mainView.classList.remove('hidden');
     } else {
-        // Navigate back to the specific previous content view.
         showContent(previousView);
     }
 }
-
