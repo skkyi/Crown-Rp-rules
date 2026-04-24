@@ -1,4 +1,3 @@
-```javascript
 // --- Data Structure for Rules ---
 const rulesData = {
     // --- 1. Main City Menu ---
@@ -14,6 +13,14 @@ const rulesData = {
                 <div class="card sub-card" onclick="showContent('general-city-rules')">قوانين عامة ⤥</div>
             </div>`
     },
+    // هنا لازم تضيف باقي الأقسام اللي رتبناها سوا (الصحة، العصابات، الديسكورد)
+    // وفي النهاية تقفل القوس كذا:
+}; 
+
+// --- Global Variables ---
+let previousView = 'main-view';
+
+// وباقي الدوال اللي عندك...
 
 
     'ministry-main': {
