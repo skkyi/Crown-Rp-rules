@@ -1,33 +1,37 @@
-/* تنسيقات عامة */
+/* تنسيقات عامة - مدينة كراون 👑 */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
 body {
     font-family: 'Cairo', sans-serif;
-    background-color: #f4f4f9; 
+    background-color: #0a0a0a; /* خلفية داكنة لتناسب الهوية الفخمة */
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #333;
+    color: #eeeeee;
+    direction: rtl; /* لضمان اتجاه النص العربي */
 }
 
 .container {
     width: 95%;
     max-width: 1100px;
-    background: #ffffff; 
+    background: #1a1a1a; /* خلفية الحاوية داكنة */
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     margin: 20px;
+    border: 1px solid #333;
 }
 
 .main-title {
     text-align: center;
-    color: #6A0DAD; 
+    color: #D4AF37; /* الذهبي كعنوان أساسي */
     font-size: 2.5rem;
     margin-bottom: 40px;
-    border-bottom: 3px solid #D4AF37; 
-    padding-bottom: 10px;
+    border-bottom: 3px solid #6A0DAD; /* البنفسجي كفاصل */
+    padding-bottom: 15px;
 }
 
 .grid-container {
@@ -37,75 +41,95 @@ body {
     margin-bottom: 40px;
 }
 
+/* الكروت الأساسية */
 .card {
-    background: #fff;
-    border: 2px solid #6A0DAD; 
+    background: #252525;
+    border: 2px solid #6A0DAD; /* البنفسجي للحدود */
+    color: #fff;
     padding: 30px;
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
     border-radius: 15px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .card:hover {
-    background-color: #D4AF37; 
-    color: #fff;
-    border-color: #D4AF37;
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    background-color: #D4AF37; /* تنقلب للذهبي عند التمرير */
+    color: #000;
+    border-color: #fff;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
 }
 
+/* الكروت الفرعية (داخل الأقسام) */
 .sub-card {
     padding: 15px;
-    font-size: 1rem;
-    background-color: #f9f0ff;
+    font-size: 1.1rem;
+    background-color: #2a2a2a;
+    border-color: #6A0DAD;
 }
 
 .hidden { display: none; }
 
+/* قسم عرض المحتوى */
 .content-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #6A0DAD;
+    border-bottom: 2px solid #D4AF37;
     padding-bottom: 15px;
     margin-bottom: 20px;
 }
 
-#content-title { color: #6A0DAD; margin: 0; }
+#content-title { 
+    color: #D4AF37; 
+    margin: 0; 
+    font-size: 1.8rem;
+}
 
 .back-btn {
     background-color: #6A0DAD;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 25px;
     border-radius: 8px;
     cursor: pointer;
     font-family: 'Cairo', sans-serif;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.back-btn:hover { background-color: #D4AF37; }
+.back-btn:hover { 
+    background-color: #D4AF37; 
+    color: #000;
+}
 
 .content-body {
-    line-height: 1.8;
-    font-size: 1.1rem;
-    color: #444;
+    line-height: 2;
+    font-size: 1.15rem;
+    color: #ddd;
     text-align: right;
     max-height: 70vh;
     overflow-y: auto;
-    padding-left: 10px;
+    padding: 0 15px;
 }
 
-/* سكرول بار أنيق */
-.content-body::-webkit-scrollbar { width: 6px; }
-.content-body::-webkit-scrollbar-thumb { background: #6A0DAD; border-radius: 10px; }
+/* سكرول بار ذهبي أنيق */
+.content-body::-webkit-scrollbar { width: 8px; }
+.content-body::-webkit-scrollbar-track { background: #1a1a1a; }
+.content-body::-webkit-scrollbar-thumb { 
+    background: #D4AF37; 
+    border-radius: 10px; 
+}
 
+/* تحسين العرض للجوال */
 @media (max-width: 600px) {
     .main-title { font-size: 1.8rem; }
-    .container { padding: 20px; }
+    .container { padding: 15px; margin: 10px; }
+    .card { padding: 20px; font-size: 1rem; }
 }
