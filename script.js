@@ -225,4 +225,4 @@ function showContent(key) {
 function showMain() {
     document.getElementById('content-view').classList.add('hidden');
     document.getElementById('main-view').classList.remove('hidden');
-}
+} // هذا القوس هو اللي كان ناقص ويخلي الألوان تروح
