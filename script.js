@@ -35,30 +35,35 @@ function updateBackButton() {
     const backBtn = document.getElementById('back-button');
     if (!backBtn) return;
 
-    // إذا كنا في الصفحة الرئيسية تماماً (main) أو المصفوفة فارغة، نخفي الزر
-    // ملاحظة: تأكد أن مفتاح القائمة الرئيسية في mainMenuData هو 'main'
+    // المنطق الجديد: الزر يظهر طالما أن هناك أكثر من صفحة واحدة في التاريخ
+    // وطالما أن الصفحة الحالية ليست 'main'
     const currentKey = navigationStack.length > 0 ? navigationStack[navigationStack.length - 1].key : '';
 
-    if (navigationStack.length <= 1 || currentKey === 'main') {
-        backBtn.style.display = 'none';
+    if (navigationStack.length > 1 && currentKey !== 'main') {
+        backBtn.style.display = 'block';
     } else {
-        backBtn.style.display = 'block'; // يظهر الزر في كل الخانات الأخرى
+        backBtn.style.display = 'none';
     }
 }
 
 /**
- * دالة الرجوع للخلف
+ * دالة الرجوع للخلف (تم إصلاح منطق الحذف)
  */
 function goBack() {
     if (navigationStack.length > 1) {
-        navigationStack.pop(); // حذف الصفحة الحالية
-        const lastPage = navigationStack[navigationStack.length - 1];
-        
-        // إعادة عرض الصفحة السابقة
-        renderContent(lastPage.key, lastPage.source);
-        
-        // حذف التكرار الناتج عن renderContent
+        // 1. نحذف الصفحة الحالية
         navigationStack.pop(); 
+        
+        // 2. نأخذ بيانات الصفحة السابقة
+        const lastPage = navigationStack[navigationStack.length - 1];
+        const prevKey = lastPage.key;
+        const prevSource = lastPage.source;
+        
+        // 3. نحذفها من المصفوفة مؤقتاً لأن renderContent ستعيد إضافتها
+        navigationStack.pop(); 
+        
+        // 4. إعادة العرض
+        renderContent(prevKey, prevSource);
     }
     updateBackButton();
 }
@@ -67,7 +72,7 @@ function goBack() {
  * دالة البحث الشامل عن المحتوى (تستخدم داخل المربعات)
  */
 function showContent(key) {
-    // البحث في جميع الملفات المتوفرة
+    // البحث في جميع الملفات المتوفرة مع التأكد من وجود البيانات
     if (typeof cityRulesData !== 'undefined' && cityRulesData[key]) {
         renderContent(key, cityRulesData);
     } 
@@ -83,6 +88,9 @@ function showContent(key) {
     else if (typeof mainMenuData !== 'undefined' && mainMenuData[key]) {
         renderContent(key, mainMenuData);
     }
+    
+    // تأكيد تحديث الزر بعد كل عملية انتقال
+    updateBackButton();
 }
 
 /**
