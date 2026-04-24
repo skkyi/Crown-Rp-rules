@@ -15,7 +15,7 @@ const rulesData = {
             </div>`
     },
 
-    // --- 2. Ministries Menu (Sub-menu) ---
+
     'ministry-main': {
         title: "👑 قـوانين الـوزارات",
         text: `
@@ -30,7 +30,7 @@ const rulesData = {
             </div>`
     },
 
-    // --- Public Security Directorate Section (Full Text) ---
+
     'public-security': {
         title: "👮🏻 مديرية الأمن العام - مدينة كراون",
         text: `<div class="rules-section">
