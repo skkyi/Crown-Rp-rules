@@ -1,4 +1,3 @@
-
 const rulesData = {
 
     'city-rules': {
