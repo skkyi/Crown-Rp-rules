@@ -10,7 +10,6 @@ const cityRulesData = {
                 <div class="card sub-card" onclick="showContent('admin-req')">قوانين طلب الإداريين ⤥</div>
                 <div class="card sub-card" onclick="showContent('kidnap-rules')">قوانين الخطف والتلويت ⤥</div>
                 <div class="card sub-card" onclick="showContent('general-city')">قوانين عامة ⤥</div>
-                <button class="back-btn" onclick="location.reload()">⬅️ العودة للصفحة الرئيسية</button> <br><br> ` 
             </div>`
     },
 
