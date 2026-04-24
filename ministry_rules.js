@@ -9,7 +9,6 @@ const ministryRulesData = {
                 <div class="card sub-card" onclick="showContent('immunity')">🛡️ نظام الحصانات</div>
                 <div class="card sub-card" onclick="showContent('public-security')">👮🏻 مديرية الأمن العام</div>
                 <div class="card sub-card" onclick="showContent('royal-guard')">👑 الحرس الملكي</div>
-<button class="back-btn" onclick="goBack()">⬅️ العودة للقائمة الرئيسية</button> 
             </div>`
     }
 };
