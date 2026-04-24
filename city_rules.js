@@ -10,6 +10,7 @@ const cityRulesData = {
                 <div class="card sub-card" onclick="showContent('admin-req')">قوانين طلب الإداريين ⤥</div>
                 <div class="card sub-card" onclick="showContent('kidnap-rules')">قوانين الخطف والتلويت ⤥</div>
                 <div class="card sub-card" onclick="showContent('general-city')">قوانين عامة ⤥</div>
+                <button class="back-btn" onclick="showContent('city-main')">⬅️ العودة للقائمة الرئيسية</button>
             </div>`
     },
 
@@ -23,6 +24,7 @@ const cityRulesData = {
             .4 - RDM・القتــل العشوائي<br>( هو القتل العشوائي أو القتل بدون تهديد ويمنع في المناطق الآمنة )
             <hr style="border: 0.5px solid #eee; margin: 15px 0;">
             <p style="color: #ff0000; font-weight: bold; text-align: center;"># مخالفة هذه القواعد الأساسية تعرضك للاستبعاد الفوري.</p>
+            <button class="back-btn" onclick="showContent('city-main')">⬅️ العودة للقائمة الرئيسية</button>
         </div>`
     },
 
@@ -34,6 +36,7 @@ const cityRulesData = {
             • <b>Meta Gaming:</b> استخدام معلومات من خارج اللعبة داخلها.<br><br>
             • <b>Power Gaming:</b> فعل أشياء مستحيلة في الواقع.<br><br>
             • <b>NLR:</b> قانون نسيان ما حدث بعد الموت وعدم العودة لموقع القتل.
+            <button class="back-btn" onclick="showContent('city-main')">⬅️ العودة للقائمة الرئيسية</button>
         </div>`
     },
 
@@ -46,6 +49,7 @@ const cityRulesData = {
             .3 - ( عدم السب والشتم أو استخدام الكلمات والعبارات والألفاظ البذيئة والهابطة )<br><br>
             .4 - ( يمنع كتابة كل ما يسبب شحنات طائفية أو دينية أو عرقية، أو أي كلام غير لائق )<br><br>
             .5 - ( يمنع عمل سبام بالشات مهما كان السبب )
+            <button class="back-btn" onclick="showContent('city-main')">⬅️ العودة للقائمة الرئيسية</button>
         </div>`
     },
 
@@ -61,6 +65,7 @@ const cityRulesData = {
             .6 - ( يمنع طلب أدمن بعد السيناريو للإنعاش، الخاسر يتحلل والفائز يطلب مسعف )<br><br>
             .7 - ( يمنع طلب أدمن بقصد كلبشته أو قتله أو تلويته )<br><br>
             .8 - ( إذا كان لديك شكوى على إداري يمنع منعاً باتاً كتابة ذلك في شات اللعبة، عليك رفع الشكوى بفتح تذكرة تكت )
+            <button class="back-btn" onclick="showContent('city-main')">⬅️ العودة للقائمة الرئيسية</button>
         </div>`
     },
 
@@ -81,6 +86,7 @@ const cityRulesData = {
             .11 - ( لا يحق لك إبقاء رهينة فوق الـ "15" دقيقة من لحظة خطفه )<br><br>
             .12 - ( في حال قيام العسكري بإلقاء القبض على أي متهم فـ له مهلة "15" دقيقة للانتهاء من السيناريو )<br><br>
             .13 - ( يمنع التلويت من داخل المركبة )
+            <button class="back-btn" onclick="showContent('city-main')">⬅️ العودة للقائمة الرئيسية</button>
         </div>`
     },
 
@@ -115,6 +121,7 @@ const cityRulesData = {
             .25 - ( يمنع منعاً باتاً صعود الجبال إلا بالسيارات المخصصة )<br><br>
             .26 - ( دخولك لروكستار آخر، عقوبتها الباند النهائي )<br><br>
             .27 - ( يمنع إهانة اللاعب المسقط بأي شكل من الأشكال )
+            <button class="back-btn" onclick="showContent('city-main')">⬅️ العودة للقائمة الرئيسية</button>
         </div>`
     }
 };
