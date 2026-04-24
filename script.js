@@ -536,20 +536,43 @@ const rulesData = {
     }
 };
 
-// الدوال البرمجية (خارج قوس rulesData)
-// تأكد أن هذا الكود موجود في نهاية ملف script.js
+// متغير لتخزين مكانك السابق
+let previousView = 'main-view'; 
+
 function showContent(key) {
     const data = rulesData[key];
-    if (data) {
-        document.getElementById('main-view').classList.add('hidden');
-        document.getElementById('content-view').classList.remove('hidden');
-        document.getElementById('content-title').innerText = data.title;
-        document.getElementById('content-text').innerHTML = data.text;
-        window.scrollTo(0, 0); // للعودة لأعلى الصفحة عند فتح قسم جديد
+    if (!data) return;
+
+    // إذا كان القسم الذي تفتحه هو "قائمة فرعية" (مثل قوانين المدينة أو الوزارات)
+    // نقوم بتحديث الـ previousView ليكون هو المرجع عند الرجوع
+    if (key === 'city-rules' || key === 'ministry-main' || key === 'gang-rules') {
+        previousView = 'main-view'; 
+    } else {
+        // إذا كنت تفتح نص قانوني دقيق، اجعل الرجوع يعود للقائمة الأم
+        if (['city-terms', 'ban-cases', 'chat-rules-detail', 'admin-requests', 'kidnap-loot', 'general-city-rules'].includes(key)) {
+            previousView = 'city-rules';
+        } else if (['min-system', 'civil-system', 'state-const', 'immunity', 'public-security', 'royal-guard', 'health-min'].includes(key)) {
+            previousView = 'ministry-main';
+        }
     }
+
+    // إخفاء الكل وإظهار المحتوى المطلوب
+    document.getElementById('main-view').classList.add('hidden');
+    document.getElementById('content-view').classList.remove('hidden');
+    
+    // تحديث العناوين والنصوص 
+    document.getElementById('content-title').innerText = data.title;
+    document.getElementById('content-text').innerHTML = data.text;
+    window.scrollTo(0, 0);
 }
 
 function showMain() {
-    document.getElementById('main-view').classList.remove('hidden');
-    document.getElementById('content-view').classList.add('hidden');
+    if (previousView === 'main-view') {
+        // رجوع للقائمة الكبيرة
+        document.getElementById('content-view').classList.add('hidden');
+        document.getElementById('main-view').classList.remove('hidden');
+    } else {
+        // رجوع للقائمة الفرعية اللي كنت فيها
+        showContent(previousView);
+    }
 }
