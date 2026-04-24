@@ -1,5 +1,7 @@
+```javascript
+// --- Data Structure for Rules ---
 const rulesData = {
-    // --- 1. القائمة الرئيسية للمدينة ---
+    // --- 1. Main City Menu ---
     'city-rules': {
         title: "قوانين المدينة 🏙️",
         text: `
@@ -13,7 +15,7 @@ const rulesData = {
             </div>`
     },
 
-    // --- 2. قوانين الوزارات (القائمة الفرعية) ---
+    // --- 2. Ministries Menu (Sub-menu) ---
     'ministry-main': {
         title: "👑 قـوانين الـوزارات",
         text: `
@@ -28,7 +30,7 @@ const rulesData = {
             </div>`
     },
 
-    // --- قسم مديرية الأمن العام (النص الكامل) ---
+    // --- Public Security Directorate Section (Full Text) ---
     'public-security': {
         title: "👮🏻 مديرية الأمن العام - مدينة كراون",
         text: `<div class="rules-section">
@@ -58,7 +60,7 @@ const rulesData = {
             [ 24 ] يحق لمديرية الأمن العام الاطلاق على اي شخص يحمل سلاح ابيض او سلاح ناري.<br>
             [ 25 ] يحق لمديرية الأمن العام تفتيش المواطن في حال الاشتباه به.<br>
             [ 26 ] لايحق لمنسوبي الامن العــــــام التنكر بغير الزي الرسمي.<br>
-            [ 27 ] لايحق لمنسوبي الامن العــــام مداهمـة مقرات العصابات بدون اعلان المــــــداهمة
+            [ 27 ] لايحق لمنسوبي الامن العــــــام مداهمـة مقرات العصابات بدون اعلان المــــــداهمة
             <hr style="border: 0.5px solid #444; margin: 20px 0;">
             <strong style="color: #D4AF37; font-size: 1.2em;">🚨 قوانين مركز الشرطة</strong><br><br>
             ممنوع منعا باتاً ركن سيارات الداخلية في المواقف المخصصة بالمواطنين ويسمح بركنها فقط في مواقف الشرطة.<br><br>
@@ -105,7 +107,7 @@ const rulesData = {
         </div>`
     },
 
-    // --- النظام الوزاري (النص الكامل) ---
+    // --- Ministry System (Full Text) ---
     'min-system': {
         title: "📋 النظام الوزاري - مدينة كراون",
         text: `<div class="rules-section">
@@ -160,7 +162,7 @@ const rulesData = {
         </div>`
     },
 
-    // --- النظام المدني (النص الكامل) ---
+    // --- Civil System (Full Text) ---
     'civil-system': {
         title: "⚖️ النظام المدني - مدينة كراون",
         text: `<div class="rules-section">
@@ -205,11 +207,11 @@ const rulesData = {
             المادة رقم ( 1 ) من نظام القبول : في حال عدم تعليم المسف او المحامي الية التاعمل مع القضية او الانعاش يتم محاسبه مسؤول القبول الذي وظفه بي تحذير اول + في حال تكررت يتم سحب صلاحيه القبول و التجنيد منه لي فتره زمنيه لاتقل عن 7 ايام<br><br>
             المادة رقم ( 1 ) من نظام المصلحة العامة : عند رؤية مسؤولين مهملين او لايتواجدون وليس لديهم اهتمام يتم إحالتهم الى التقاعد فوراً<br><br>
             المادة رقم ( 1 ) من نظام الاهتمام : في حال التهاون في قبول المقدمين او المشتكين يتم سحب الصلاحية مباشرة مهما كانت رتبتة<br><br>
-            المادة رقم ( 1 ) من نظام الأستدعاء : في حال شخص تم استدعائة وتخلف عن الموعد سيتم محاسبتة ب اشد العقوبات
+            المادة رقم ( 1 ) من نظام الأستدعاء : في حال شخص تم استدعائة وتخلف عن الموعد سيتم محاسبته ب اشد العقوبات
         </div>`
     },
 
-    // --- دستور الدولة (النص الكامل) ---
+    // --- State Constitution (Full Text) ---
     'state-const': {
         title: "📜 دستور الدولة - مدينة كراون",
         text: `<div class="rules-section">
@@ -239,7 +241,7 @@ const rulesData = {
         </div>`
     },
 
-    // --- الحصانات (النص الكامل) ---
+    // --- Immunities (Full Text) ---
     'immunity': {
         title: "🛡️ نظام الحصانات - مدينة كراون",
         text: `<div class="rules-section">
@@ -259,9 +261,8 @@ const rulesData = {
         </div>`
     },
 
-    // --- باقي الأقسام ---
+    // --- Other Sections ---
     'health-min': {
-       'health-min': {
         title: "👨‍⚕️ قوانين وزارة الصحة - مدينة كراون",
         text: `<div class="rules-section">
             <strong style="color: #D4AF37;">[ قوانين الصحة ]</strong><br><br>
@@ -306,7 +307,7 @@ const rulesData = {
             </div>
         </div>`
     },
-   'gang-rules': {
+    'gang-rules': {
         title: "قوانين المنظمات والعصابات 🔪",
         text: `<div class="rules-section">
             .1 - ( يمنع ارتداء أو استعمال أي خوذة أثناء مشاركتك في أي سيناريو أو فايت )<br><br>
@@ -378,37 +379,74 @@ const rulesData = {
                 # مخالفة أي من القوانين الموضحة قد يعرضك إلى باند نهائي لذا يرجى من الجميع الالتزام بالقوانين الموضحة أعلاه.
             </p>
         </div>`
-  
-}
+    }
+};
 
-// --- الدوال البرمجية ---
-let previousView = 'main-view'; 
+// --- Global Variables ---
+// Tracks the previous view to allow navigation back.
+// Initialized to 'main-view' as the default starting point.
+let previousView = 'main-view';
 
+// --- Functions ---
+
+/**
+ * Displays content based on the provided key.
+ * Updates the UI to show the selected rule section.
+ * Manages the 'previousView' state for navigation.
+ * @param {string} key - The key corresponding to the rule section in rulesData.
+ */
 function showContent(key) {
     const data = rulesData[key];
-    if (!data) return;
-
-    if (['city-rules', 'ministry-main', 'gang-rules', 'discord-rules'].includes(key)) {
-        previousView = 'main-view'; 
-    } else {
-        const citySub = ['city-terms', 'ban-cases', 'chat-rules-detail', 'admin-requests', 'kidnap-loot', 'general-city-rules'];
-        const minSub = ['min-system', 'civil-system', 'state-const', 'immunity', 'public-security', 'royal-guard', 'health-min'];
-        if (citySub.includes(key)) previousView = 'city-rules';
-        else if (minSub.includes(key)) previousView = 'ministry-main';
+    if (!data) {
+        console.error(`Content with key "${key}" not found.`);
+        return;
     }
 
-    document.getElementById('main-view').classList.add('hidden');
-    document.getElementById('content-view').classList.remove('hidden');
-    document.getElementById('content-title').innerText = data.title;
-    document.getElementById('content-text').innerHTML = data.text;
+    // Determine the previous view based on the key's category.
+    // This logic could be refactored for better maintainability if more categories are added.
+    const mainCategories = ['city-rules', 'ministry-main', 'gang-rules', 'discord-rules'];
+    const citySubCategories = ['city-terms', 'ban-cases', 'chat-rules-detail', 'admin-requests', 'kidnap-loot', 'general-city-rules'];
+    const ministrySubCategories = ['min-system', 'civil-system', 'state-const', 'immunity', 'public-security', 'royal-guard', 'health-min'];
+
+    if (mainCategories.includes(key)) {
+        previousView = 'main-view';
+    } else if (citySubCategories.includes(key)) {
+        previousView = 'city-rules';
+    } else if (ministrySubCategories.includes(key)) {
+        previousView = 'ministry-main';
+    }
+    // Add more else if blocks here for other sub-category mappings if needed.
+
+    // Update UI elements.
+    const mainViewElement = document.getElementById('main-view');
+    const contentViewElement = document.getElementById('content-view');
+    const contentTitleElement = document.getElementById('content-title');
+    const contentTextElement = document.getElementById('content-text');
+
+    if (mainViewElement) mainViewElement.classList.add('hidden');
+    if (contentViewElement) contentViewElement.classList.remove('hidden');
+    if (contentTitleElement) contentTitleElement.innerText = data.title;
+    if (contentTextElement) contentTextElement.innerHTML = data.text;
+
+    // Scroll to the top of the content view.
     window.scrollTo(0, 0);
 }
 
+/**
+ * Navigates back to the previous view.
+ * If the previous view was the main menu, it shows the main menu.
+ * Otherwise, it calls showContent with the stored previousView key.
+ */
 function showMain() {
+    const mainViewElement = document.getElementById('main-view');
+    const contentViewElement = document.getElementById('content-view');
+
     if (previousView === 'main-view') {
-        document.getElementById('content-view').classList.add('hidden');
-        document.getElementById('main-view').classList.remove('hidden');
+        if (contentViewElement) contentViewElement.classList.add('hidden');
+        if (mainViewElement) mainViewElement.classList.remove('hidden');
     } else {
+        // Navigate back to the specific previous content view.
         showContent(previousView);
     }
 }
+
