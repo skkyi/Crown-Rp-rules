@@ -537,17 +537,19 @@ const rulesData = {
 };
 
 // الدوال البرمجية (خارج قوس rulesData)
+// تأكد أن هذا الكود موجود في نهاية ملف script.js
 function showContent(key) {
     const data = rulesData[key];
-    if (!data) return;
-    document.getElementById('main-view').classList.add('hidden');
-    document.getElementById('content-view').classList.remove('hidden');
-    document.getElementById('content-title').innerText = data.title;
-    document.getElementById('content-text').innerHTML = data.text;
-    window.scrollTo(0, 0);
+    if (data) {
+        document.getElementById('main-view').classList.add('hidden');
+        document.getElementById('content-view').classList.remove('hidden');
+        document.getElementById('content-title').innerText = data.title;
+        document.getElementById('content-text').innerHTML = data.text;
+        window.scrollTo(0, 0); // للعودة لأعلى الصفحة عند فتح قسم جديد
+    }
 }
 
 function showMain() {
-    document.getElementById('content-view').classList.add('hidden');
     document.getElementById('main-view').classList.remove('hidden');
+    document.getElementById('content-view').classList.add('hidden');
 }
