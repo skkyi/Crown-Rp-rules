@@ -1,4 +1,5 @@
 const ministryRulesData = {
+    // 1. القائمة الفرعية للوزارات
     'ministry-main': {
         title: "👑 قـوانين الـوزارات",
         text: `
@@ -9,6 +10,8 @@ const ministryRulesData = {
                 <div class="card sub-card" onclick="showContent('immunity')">🛡️ نظام الحصانات</div>
                 <div class="card sub-card" onclick="showContent('public-security')">👮🏻 مديرية الأمن العام</div>
                 <div class="card sub-card" onclick="showContent('royal-guard')">👑 الحرس الملكي</div>
+                <div class="card sub-card" onclick="showContent('health-ministry')">👨‍⚕️ وزارة الصحة</div>
             </div>`
     }
-};
+    
+    },
