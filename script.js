@@ -130,7 +130,6 @@ const rulesData = {
                 <div class="card sub-card" onclick="showContent('public-security')">الامن العام ⤥</div>
                 <div class="card sub-card" onclick="showContent('royal-guard')">الحرس الملكي ⤥</div>
                 <div class="card sub-card" onclick="showContent('health-min')">وزارة الصحة ⤥</div>
-                <div class="card sub-card" onclick="showContent('radio-protocol')">بروتوكولات الراديو ⤥</div>
             </div>`
     },
 
