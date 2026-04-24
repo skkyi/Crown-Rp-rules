@@ -1,6 +1,6 @@
-// --- Data Structure for Rules ---
+
 const rulesData = {
-    // --- 1. Main City Menu ---
+
     'city-rules': {
         title: "قوانين المدينة 🏙️",
         text: `
@@ -13,15 +13,11 @@ const rulesData = {
                 <div class="card sub-card" onclick="showContent('general-city-rules')">قوانين عامة ⤥</div>
             </div>`
     },
-    // هنا لازم تضيف باقي الأقسام اللي رتبناها سوا (الصحة، العصابات، الديسكورد)
-    // وفي النهاية تقفل القوس كذا:
+
 }; 
 
-// --- Global Variables ---
+
 let previousView = 'main-view';
-
-// وباقي الدوال اللي عندك...
-
 
     'ministry-main': {
         title: "👑 قـوانين الـوزارات",
@@ -114,7 +110,6 @@ let previousView = 'main-view';
         </div>`
     },
 
-    // --- Ministry System (Full Text) ---
     'min-system': {
         title: "📋 النظام الوزاري - مدينة كراون",
         text: `<div class="rules-section">
@@ -169,7 +164,7 @@ let previousView = 'main-view';
         </div>`
     },
 
-    // --- Civil System (Full Text) ---
+   
     'civil-system': {
         title: "⚖️ النظام المدني - مدينة كراون",
         text: `<div class="rules-section">
@@ -218,7 +213,7 @@ let previousView = 'main-view';
         </div>`
     },
 
-    // --- State Constitution (Full Text) ---
+   
     'state-const': {
         title: "📜 دستور الدولة - مدينة كراون",
         text: `<div class="rules-section">
@@ -248,7 +243,7 @@ let previousView = 'main-view';
         </div>`
     },
 
-    // --- Immunities (Full Text) ---
+    
     'immunity': {
         title: "🛡️ نظام الحصانات - مدينة كراون",
         text: `<div class="rules-section">
@@ -268,7 +263,7 @@ let previousView = 'main-view';
         </div>`
     },
 
-    // --- Other Sections ---
+    
     'health-min': {
         title: "👨‍⚕️ قوانين وزارة الصحة - مدينة كراون",
         text: `<div class="rules-section">
