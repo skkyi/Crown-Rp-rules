@@ -3,34 +3,34 @@
 
 body {
     font-family: 'Cairo', sans-serif;
-    background-color: #0a0a0a; /* خلفية داكنة لتناسب الهوية الفخمة */
+    background-color: #ffffff; /* خلفية بيضاء صافية */
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #eeeeee;
-    direction: rtl; /* لضمان اتجاه النص العربي */
+    color: #333; /* نصوص داكنة للقراءة */
+    direction: rtl;
 }
 
 .container {
     width: 95%;
     max-width: 1100px;
-    background: #1a1a1a; /* خلفية الحاوية داكنة */
+    background: #ffffff;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05); /* ظل خفيف جداً */
     margin: 20px;
-    border: 1px solid #333;
+    border: 1px solid #eee;
 }
 
 .main-title {
     text-align: center;
-    color: #D4AF37; /* الذهبي كعنوان أساسي */
+    color: #6A0DAD; /* بنفسجي */
     font-size: 2.5rem;
     margin-bottom: 40px;
-    border-bottom: 3px solid #6A0DAD; /* البنفسجي كفاصل */
+    border-bottom: 3px solid #D4AF37; /* ذهبي */
     padding-bottom: 15px;
 }
 
@@ -41,42 +41,37 @@ body {
     margin-bottom: 40px;
 }
 
-/* الكروت الأساسية */
 .card {
-    background: #252525;
-    border: 2px solid #6A0DAD; /* البنفسجي للحدود */
-    color: #fff;
+    background: #ffffff;
+    border: 2px solid #6A0DAD;
+    color: #6A0DAD;
     padding: 30px;
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
     border-radius: 15px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .card:hover {
-    background-color: #D4AF37; /* تنقلب للذهبي عند التمرير */
-    color: #000;
-    border-color: #fff;
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+    background-color: #D4AF37;
+    color: #fff;
+    border-color: #D4AF37;
+    transform: translateY(-5px);
 }
 
-/* الكروت الفرعية (داخل الأقسام) */
 .sub-card {
     padding: 15px;
     font-size: 1.1rem;
-    background-color: #2a2a2a;
-    border-color: #6A0DAD;
+    background-color: #fcfaff;
 }
 
 .hidden { display: none; }
 
-/* قسم عرض المحتوى */
 .content-header {
     display: flex;
     align-items: center;
@@ -86,11 +81,7 @@ body {
     margin-bottom: 20px;
 }
 
-#content-title { 
-    color: #D4AF37; 
-    margin: 0; 
-    font-size: 1.8rem;
-}
+#content-title { color: #6A0DAD; margin: 0; }
 
 .back-btn {
     background-color: #6A0DAD;
@@ -101,35 +92,11 @@ body {
     cursor: pointer;
     font-family: 'Cairo', sans-serif;
     font-weight: bold;
-    transition: 0.3s;
-}
-
-.back-btn:hover { 
-    background-color: #D4AF37; 
-    color: #000;
 }
 
 .content-body {
-    line-height: 2;
-    font-size: 1.15rem;
-    color: #ddd;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #444;
     text-align: right;
-    max-height: 70vh;
-    overflow-y: auto;
-    padding: 0 15px;
-}
-
-/* سكرول بار ذهبي أنيق */
-.content-body::-webkit-scrollbar { width: 8px; }
-.content-body::-webkit-scrollbar-track { background: #1a1a1a; }
-.content-body::-webkit-scrollbar-thumb { 
-    background: #D4AF37; 
-    border-radius: 10px; 
-}
-
-/* تحسين العرض للجوال */
-@media (max-width: 600px) {
-    .main-title { font-size: 1.8rem; }
-    .container { padding: 15px; margin: 10px; }
-    .card { padding: 20px; font-size: 1rem; }
 }
