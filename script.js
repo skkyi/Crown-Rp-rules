@@ -379,7 +379,7 @@ const rulesData = {
             </p>
         </div>`
   
-};
+}
 
 // --- الدوال البرمجية ---
 let previousView = 'main-view'; 
