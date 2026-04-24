@@ -1,16 +1,15 @@
-/* تنسيقات عامة - مدينة كراون 👑 */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
 body {
     font-family: 'Cairo', sans-serif;
-    background-color: #ffffff; /* خلفية بيضاء صافية */
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #333; /* نصوص داكنة للقراءة */
+    color: #333;
     direction: rtl;
 }
 
@@ -20,17 +19,17 @@ body {
     background: #ffffff;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.05); /* ظل خفيف جداً */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     margin: 20px;
     border: 1px solid #eee;
 }
 
 .main-title {
     text-align: center;
-    color: #6A0DAD; /* بنفسجي */
+    color: #6A0DAD;
     font-size: 2.5rem;
     margin-bottom: 40px;
-    border-bottom: 3px solid #D4AF37; /* ذهبي */
+    border-bottom: 3px solid #D4AF37;
     padding-bottom: 15px;
 }
 
@@ -51,7 +50,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     border-radius: 15px;
-    transition: 0.3s;
+    transition: 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,9 +64,10 @@ body {
 }
 
 .sub-card {
-    padding: 15px;
+    padding: 20px;
     font-size: 1.1rem;
-    background-color: #fcfaff;
+    background-color: #fff;
+    border: 2px solid #6A0DAD;
 }
 
 .hidden { display: none; }
@@ -81,7 +81,7 @@ body {
     margin-bottom: 20px;
 }
 
-#content-title { color: #6A0DAD; margin: 0; }
+#content-title { color: #6A0DAD; margin: 0; font-size: 1.8rem; }
 
 .back-btn {
     background-color: #6A0DAD;
@@ -94,9 +94,21 @@ body {
     font-weight: bold;
 }
 
+.back-btn:hover { background-color: #D4AF37; }
+
 .content-body {
     line-height: 1.8;
     font-size: 1.1rem;
     color: #444;
     text-align: right;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.rules-section { padding: 10px; }
+
+@media (max-width: 600px) {
+    .main-title { font-size: 1.8rem; }
+    .container { padding: 20px; }
 }
