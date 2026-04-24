@@ -3,41 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قوانين سيرفر كراون RP</title>
+    <title>CROWN | قوانين سيرفر كراون</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <div id="main-view">
-            <h1 class="main-title">قوانين سيرفر كراون RP</h1>
-            
-            <div class="grid-container">
-                <div class="card" onclick="showContent('city-rules')">قوانين المدينة</div>
-                <div class="card" onclick="showContent('ban-rules')">حالات الباند النهائي</div>
-                <div class="card" onclick="showContent('chat-rules')">قوانين شات اللعبة</div>
-                <div class="card" onclick="showContent('admin-rules')">قوانين طلب الإداريين</div>
-                <div class="card" onclick="showContent('kidnap-rules')">قوانين الخطف والتلويت</div>
-                <div class="card" onclick="showContent('ministry-main')">👑 قوانين الوزارات</div>
-            </div>
-
-            <div class="footer-note">
-                <p>ملاحظة: جميع القوانين تابعة لسيرفر كراون</p>
-                <p>نرجوا منك إتباع جميع القوانين لكي لا يتم محاسبتك.</p>
-            </div>
-        </div>
-
-        <div id="content-view" class="hidden">
-            <div class="content-header">
-                <button class="back-btn" onclick="showMain()">رجوع</button>
-                <h2 id="content-title">عنوان القسم</h2>
-            </div>
-            <div id="content-text" class="content-body">
-                </div>
-        </div>
+<div class="container">
+    <div id="main-view">
+    <h1 class="main-title">👑 قـوانين سـيرفر كـراون 👑</h1>
+    <div class="grid-container">
+        <div class="card" onclick="showContent('city-rules')">🏙️ قـوانين الـمديـنة ⤥</div>
+        <div class="card" onclick="showContent('ministry-main')">👑 قـوانين الـوزارات ⤥</div>
+        <div class="card" onclick="showContent('discord-rules')">📱 قـوانين الـدسكورد ⤥</div>
+        <div class="card" onclick="showContent('gang-rules')">🔪 قـوانين المنظمات والعصابات ⤥</div>
     </div>
+    <p class="footer-note">جميع الحقوق محفوظة لسيرفر كراون CROWN RP © 2026</p>
+</div>
+    <div id="content-view" class="hidden">
+        <div class="content-header">
+            <h2 id="content-title"></h2>
+            <button class="back-btn" onclick="showMain()">العودة</button>
+        </div>
+        <div id="content-text" class="content-body"></div>
+    </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
