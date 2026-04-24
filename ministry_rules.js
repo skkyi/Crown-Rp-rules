@@ -12,6 +12,4 @@ const ministryRulesData = {
                 <div class="card sub-card" onclick="showContent('royal-guard')">👑 الحرس الملكي</div>
                 <div class="card sub-card" onclick="showContent('health-ministry')">👨‍⚕️ وزارة الصحة</div>
             </div>`
-    }
-    
     },
