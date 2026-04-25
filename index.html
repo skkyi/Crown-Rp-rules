@@ -22,6 +22,7 @@
 
         <div class="footer" style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #888;">
             <hr style="border: 0.1px solid #333; margin: 20px 0;">
+            <p>جميع الحقوق محفوظة لمدينة كراون © 2026</p>
         </div>
     </div>
 
@@ -29,19 +30,18 @@
     <script src="discord_rules.js"></script>
     <script src="ministry_rules.js"></script>
     <script src="gang_rules.js"></script> 
-    <script src="main_menu.js"></script>
+    <script src="escape_rules.js"></script> <script src="main_menu.js"></script>
 
     <script src="script.js"></script>
 
     <script>
         // تشغيل القائمة الرئيسية فور تحميل الصفحة
         window.onload = () => {
-            // نتحقق من وجود الدالة قبل التشغيل لتجنب الأخطاء
-            if (typeof renderContent === "function") {
-                // 'main' هي المفتاح الأول في mainMenuData
+            // نتحقق من وجود الدالة والبيانات قبل التشغيل لتجنب أي تعليق
+            if (typeof renderContent === "function" && typeof mainMenuData !== "undefined") {
                 renderContent('main', mainMenuData);
             } else {
-                console.error("تنبيه: دالة renderContent غير موجودة في script.js - تأكد من رفع الملف بشكل صحيح");
+                console.error("تنبيه: تأكد من وجود ملفات الـ JS في نفس المجلد وتسميتها بشكل صحيح");
             }
         };
     </script>
