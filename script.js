@@ -5,16 +5,20 @@ let navigationStack = [];
  * الدالة الأساسية لعرض المحتوى
  */
 function renderContent(contentKey, dataSource) {
-    const data = dataSource[contentKey];
-    
-    if (!data) {
+    if (!dataSource || !dataSource[contentKey]) {
         console.error("المحتوى غير موجود:", contentKey);
         return;
     }
 
+    const data = dataSource[contentKey];
+
     // تحديث العناوين والنصوص في الصفحة
-    document.getElementById('main-title').innerHTML = data.title;
-    document.getElementById('content-area').innerHTML = data.text;
+    // تأكد أن الـ IDs هذه موجودة في ملف الـ HTML (main-title و content-area)
+    const titleElement = document.getElementById('main-title');
+    const contentElement = document.getElementById('content-area');
+
+    if (titleElement) titleElement.innerHTML = data.title;
+    if (contentElement) contentElement.innerHTML = data.text;
 
     // تسجيل الصفحة في التاريخ إذا لم تكن موجودة مسبقاً (لتجنب التكرار)
     if (navigationStack.length === 0 || navigationStack[navigationStack.length - 1].key !== contentKey) {
@@ -35,8 +39,7 @@ function updateBackButton() {
     const backBtn = document.getElementById('back-button');
     if (!backBtn) return;
 
-    // المنطق الجديد: الزر يظهر طالما أن هناك أكثر من صفحة واحدة في التاريخ
-    // وطالما أن الصفحة الحالية ليست 'main'
+    // المنطق: الزر يظهر طالما أن هناك أكثر من صفحة واحدة في التاريخ
     const currentKey = navigationStack.length > 0 ? navigationStack[navigationStack.length - 1].key : '';
 
     if (navigationStack.length > 1 && currentKey !== 'main') {
@@ -47,11 +50,11 @@ function updateBackButton() {
 }
 
 /**
- * دالة الرجوع للخلف (تم إصلاح منطق الحذف)
+ * دالة الرجوع للخلف
  */
 function goBack() {
     if (navigationStack.length > 1) {
-        // 1. نحذف الصفحة الحالية
+        // 1. نحذف الصفحة الحالية من السجل
         navigationStack.pop(); 
         
         // 2. نأخذ بيانات الصفحة السابقة
@@ -59,7 +62,7 @@ function goBack() {
         const prevKey = lastPage.key;
         const prevSource = lastPage.source;
         
-        // 3. نحذفها من المصفوفة مؤقتاً لأن renderContent ستعيد إضافتها
+        // 3. نحذفها مؤقتاً لأن renderContent ستعيد إضافتها للسجل
         navigationStack.pop(); 
         
         // 4. إعادة العرض
@@ -69,18 +72,18 @@ function goBack() {
 }
 
 /**
- * دالة البحث الشامل عن المحتوى (تستخدم داخل المربعات)
+ * دالة البحث الشامل عن المحتوى (تستخدم داخل المربعات والأزرار)
  */
 function showContent(key) {
-    // البحث في جميع الملفات المتوفرة مع التأكد من وجود البيانات
-    if (typeof cityRulesData !== 'undefined' && cityRulesData[key]) {
+    // الترتيب هنا مهم: يبحث في قوانين الوزارات أولاً إذا كانت موجودة
+    if (typeof ministryRulesData !== 'undefined' && ministryRulesData[key]) {
+        renderContent(key, ministryRulesData);
+    } 
+    else if (typeof cityRulesData !== 'undefined' && cityRulesData[key]) {
         renderContent(key, cityRulesData);
     } 
     else if (typeof gangRulesData !== 'undefined' && gangRulesData[key]) {
         renderContent(key, gangRulesData);
-    } 
-    else if (typeof ministryRulesData !== 'undefined' && ministryRulesData[key]) {
-        renderContent(key, ministryRulesData);
     } 
     else if (typeof discordRulesData !== 'undefined' && discordRulesData[key]) {
         renderContent(key, discordRulesData);
@@ -89,25 +92,29 @@ function showContent(key) {
         renderContent(key, mainMenuData);
     }
     
-    // تأكيد تحديث الزر بعد كل عملية انتقال
     updateBackButton();
 }
 
 /**
- * دوال الانتقال المباشر من الواجهة الرئيسية
+ * دوال الانتقال المباشر من الواجهة الرئيسية لمدينة كراون
  */
 function loadCityRules() {
-    renderContent('city-main', cityRulesData);
+    if (typeof cityRulesData !== 'undefined') renderContent('city-main', cityRulesData);
 }
 
 function loadMinistryRules() {
-    renderContent('ministry-main', ministryRulesData);
+    if (typeof ministryRulesData !== 'undefined') renderContent('ministry-main', ministryRulesData);
 }
 
 function loadGangRules() {
-    renderContent('gang-rules', gangRulesData);
+    if (typeof gangRulesData !== 'undefined') renderContent('gang-rules', gangRulesData);
 }
 
 function loadDiscordRules() {
-    renderContent('discord-main', discordRulesData);
+    if (typeof discordRulesData !== 'undefined') renderContent('discord-main', discordRulesData);
 }
+
+// تشغيل الحالة الابتدائية عند تحميل الصفحة (اختياري)
+window.onload = function() {
+    updateBackButton();
+};
