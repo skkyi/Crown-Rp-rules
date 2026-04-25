@@ -129,7 +129,7 @@ const ministryRulesData = {
                 <br>
                 <p style="text-align: center; color: #888;"># يرجى الإلتزام بدفتر التهم الجنائية وعدم الخروج عنه</p>
             </div>`
-    }
+    },
 
     'royal-guard': {
         title: "👑 الحرس الملكي",
