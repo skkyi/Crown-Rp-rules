@@ -12,23 +12,18 @@ function renderContent(contentKey, dataSource) {
 
     const data = dataSource[contentKey];
 
-    // تحديث العناوين والنصوص في الصفحة
-    // تأكد أن الـ IDs هذه موجودة في ملف الـ HTML (main-title و content-area)
     const titleElement = document.getElementById('main-title');
     const contentElement = document.getElementById('content-area');
 
     if (titleElement) titleElement.innerHTML = data.title;
     if (contentElement) contentElement.innerHTML = data.text;
 
-    // تسجيل الصفحة في التاريخ إذا لم تكن موجودة مسبقاً (لتجنب التكرار)
+    // تسجيل الصفحة في التاريخ إذا لم تكن موجودة مسبقاً
     if (navigationStack.length === 0 || navigationStack[navigationStack.length - 1].key !== contentKey) {
         navigationStack.push({ key: contentKey, source: dataSource });
     }
 
-    // تحديث ظهور زر الرجوع بشكل دائم وذكي
     updateBackButton();
-
-    // التمرير لأعلى الصفحة عند تغيير المحتوى
     window.scrollTo(0, 0);
 }
 
@@ -39,7 +34,7 @@ function updateBackButton() {
     const backBtn = document.getElementById('back-button');
     if (!backBtn) return;
 
-    // المنطق: الزر يظهر طالما أن هناك أكثر من صفحة واحدة في التاريخ
+    // الزر يظهر طالما أننا لسنا في الصفحة الرئيسية (main)
     const currentKey = navigationStack.length > 0 ? navigationStack[navigationStack.length - 1].key : '';
 
     if (navigationStack.length > 1 && currentKey !== 'main') {
@@ -54,28 +49,23 @@ function updateBackButton() {
  */
 function goBack() {
     if (navigationStack.length > 1) {
-        // 1. نحذف الصفحة الحالية من السجل
         navigationStack.pop(); 
-        
-        // 2. نأخذ بيانات الصفحة السابقة
         const lastPage = navigationStack[navigationStack.length - 1];
+        
+        // نحذفها مؤقتاً لأن renderContent ستعيد إضافتها للسجل
         const prevKey = lastPage.key;
         const prevSource = lastPage.source;
-        
-        // 3. نحذفها مؤقتاً لأن renderContent ستعيد إضافتها للسجل
         navigationStack.pop(); 
         
-        // 4. إعادة العرض
         renderContent(prevKey, prevSource);
     }
-    updateBackButton();
 }
 
 /**
- * دالة البحث الشامل عن المحتوى (تستخدم داخل المربعات والأزرار)
+ * دالة البحث الشامل عن المحتوى
  */
 function showContent(key) {
-    // الترتيب هنا مهم: يبحث في قوانين الوزارات أولاً إذا كانت موجودة
+    // أضفنا escapeRulesData هنا ليدعم البحث والانتقال
     if (typeof ministryRulesData !== 'undefined' && ministryRulesData[key]) {
         renderContent(key, ministryRulesData);
     } 
@@ -88,6 +78,9 @@ function showContent(key) {
     else if (typeof discordRulesData !== 'undefined' && discordRulesData[key]) {
         renderContent(key, discordRulesData);
     }
+    else if (typeof escapeRulesData !== 'undefined' && escapeRulesData[key]) {
+        renderContent(key, escapeRulesData);
+    }
     else if (typeof mainMenuData !== 'undefined' && mainMenuData[key]) {
         renderContent(key, mainMenuData);
     }
@@ -96,7 +89,7 @@ function showContent(key) {
 }
 
 /**
- * دوال الانتقال المباشر من الواجهة الرئيسية لمدينة كراون
+ * دوال الانتقال المباشر من الواجهة الرئيسية
  */
 function loadCityRules() {
     if (typeof cityRulesData !== 'undefined') renderContent('city-main', cityRulesData);
@@ -114,7 +107,18 @@ function loadDiscordRules() {
     if (typeof discordRulesData !== 'undefined') renderContent('discord-main', discordRulesData);
 }
 
-// تشغيل الحالة الابتدائية عند تحميل الصفحة (اختياري)
+// الدالة الجديدة لقوانين الهروب
+function loadEscapeRules() {
+    if (typeof escapeRulesData !== 'undefined') renderContent('escape-main', escapeRulesData);
+}
+
+/**
+ * تشغيل الحالة الابتدائية
+ */
 window.onload = function() {
+    // عرض القائمة الرئيسية فور التحميل
+    if (typeof mainMenuData !== 'undefined') {
+        renderContent('main', mainMenuData);
+    }
     updateBackButton();
 };
