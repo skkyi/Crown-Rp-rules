@@ -1,5 +1,5 @@
 const ministryRulesData = {
-    // 1. القائمة الفرعية للوزارات
+
     'ministry-main': {
         title: "👑 قـوانين الـوزارات",
         text: `
@@ -20,7 +20,6 @@ const ministryRulesData = {
         text: `<div class="rules-section">.1 - يمنع خطف أو قتل المسعف.<br>.2 - المسعف شخصية محايدة تماماً.</div>`
     },
 
-    // 3. تعريف باقي الأقسام (عشان ما يعلق الموقع لو ضغطت عليها)
     'civil-system': {
         title: "⚖️ النظام المدني",
         text: `<div class="rules-section">قوانين النظام المدني لمدينة كراون تظهر هنا...</div>`
@@ -222,3 +221,4 @@ const ministryRulesData = {
                 <br><br>
             </div>`
     }
+};
